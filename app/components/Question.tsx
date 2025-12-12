@@ -20,7 +20,6 @@ const Question = ({
   helperText,
   onChange,
 }: Question_Props) => {
-  // const Question = () => {
   return (
     <div className="bg-slate-100 p-2">
       <div className="flex flex-col gap-3">

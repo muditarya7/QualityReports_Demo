@@ -2,6 +2,8 @@
 import Question from '@/app/components/Question';
 import { useState } from 'react';
 import { mock_questions } from '@/app/data/mock_question';
+import { generatePDF } from '@/app/utils/downloadpdf';
+
 export default function FormPage() {
   const [answers, setAnswers] = useState(mock_questions);
   const updateAnswer = (id: number, newValue: any) => {
@@ -26,6 +28,12 @@ export default function FormPage() {
           onChange={(val) => updateAnswer(Q.id, val)}
         />
       ))}
+      <button
+        onClick={() => generatePDF(answers)}
+        className="bg-blue-600 text-white px-4 py-2 rounded mt-8"
+      >
+        Download PDF
+      </button>
     </div>
   );
 }
