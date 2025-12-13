@@ -7,8 +7,9 @@ export type Question_Props = {
   options?: string[];
   required?: boolean;
   helperText?: string;
-  onChange: (val: any) => void;
+  onChange: (val: any | undefined) => void;
 };
+export type QuestionData = Omit<Question_Props, 'onChange'>;
 
 const Question = ({
   id,

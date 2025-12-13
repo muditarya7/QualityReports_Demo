@@ -1,54 +1,55 @@
 import { QuestionData } from '../components/Question';
-export const mock_questions: QuestionData[] = [
+
+export const equipment_questions: QuestionData[] = [
   {
     id: 1,
-    description: 'Are you authorized to fill out this inspection form?',
+    description: 'Is the equipment powered off before inspection?',
     type: 'boolean',
     required: true,
     value: false,
   },
   {
     id: 2,
-    description: 'What is the name of the inspector?',
+    description: 'Enter the equipment serial number:',
     type: 'text',
     required: true,
     value: '',
   },
   {
     id: 3,
-    description: 'Enter the temperature reading (°F):',
+    description: 'Record the operating temperature (°F):',
     type: 'number',
     required: true,
     value: 0,
   },
   {
     id: 4,
-    description: 'Select the inspection area:',
+    description: 'Select the condition of the equipment:',
     type: 'dropdown',
-    options: ['Warehouse', 'Office', 'Storage', 'Loading Dock'],
+    options: ['Good', 'Minor Issues', 'Needs Repair', 'Out of Service'],
     required: true,
     value: '',
   },
   {
     id: 5,
-    description: 'Did all safety equipment pass visual inspection?',
+    description: 'Did the equipment pass the mechanical check?',
     type: 'boolean',
     required: true,
     value: false,
   },
   {
     id: 6,
-    description: 'Pick the date and time of inspection:',
+    description: 'Inspection date & time:',
     type: 'datetime',
     required: true,
     value: '',
   },
   {
     id: 7,
-    description: 'List any issues found during inspection:',
+    description: 'List any defects or notes:',
     type: 'text',
     required: false,
-    helperText: 'Leave blank if no issues were found.',
     value: '',
+    helperText: 'Leave blank if no defects were found.',
   },
 ];

@@ -1,51 +1,52 @@
-import { QuestionData } from '../components/Question';
-export const mock_questions: QuestionData[] = [
+import { QuestionData } from '@/app/components/Question';
+
+export const facility_questions: QuestionData[] = [
   {
     id: 1,
-    description: 'Are you authorized to fill out this inspection form?',
+    description: 'Is the facility clean and free of obstructions?',
     type: 'boolean',
     required: true,
     value: false,
   },
   {
     id: 2,
-    description: 'What is the name of the inspector?',
+    description: 'Enter the building/area name:',
     type: 'text',
     required: true,
     value: '',
   },
   {
     id: 3,
-    description: 'Enter the temperature reading (°F):',
+    description: 'Rate the facility lighting condition on a scale of 1–10:',
     type: 'number',
     required: true,
     value: 0,
   },
   {
     id: 4,
-    description: 'Select the inspection area:',
+    description: 'Select flooring condition:',
     type: 'dropdown',
-    options: ['Warehouse', 'Office', 'Storage', 'Loading Dock'],
+    options: ['Dry', 'Wet', 'Damaged', 'Uneven'],
     required: true,
     value: '',
   },
   {
     id: 5,
-    description: 'Did all safety equipment pass visual inspection?',
+    description: 'Is ventilation functioning properly?',
     type: 'boolean',
     required: true,
     value: false,
   },
   {
     id: 6,
-    description: 'Pick the date and time of inspection:',
+    description: 'Inspection timestamp:',
     type: 'datetime',
     required: true,
     value: '',
   },
   {
     id: 7,
-    description: 'List any issues found during inspection:',
+    description: 'Describe any hazards or maintenance needs:',
     type: 'text',
     required: false,
     helperText: 'Leave blank if no issues were found.',
