@@ -14,7 +14,8 @@ export default function AnswerField({
   options,
   onChange,
 }: AnswerFieldProps) {
-  /* BOOLEAN (YES / NO) */
+  /* Boolean */
+
   if (type === 'boolean') {
     return (
       <div className="flex items-center gap-3">
@@ -24,8 +25,8 @@ export default function AnswerField({
           className={cn(
             'px-5 py-2 rounded-md text-sm font-medium transition-all duration-150',
             value === true
-              ? 'bg-[#2EBE74] text-white shadow-sm'
-              : 'bg-[#9AA5B1] text-[#3E4C59] hover:bg-[#9AA5B1]/80'
+              ? 'bg-[#51CA58] text-white shadow-sm' // selected YES
+              : 'bg-[#E4E7EB] text-[#3E4C59] hover:bg-[#9AA5B1]/80' // unselected
           )}
           onClick={() => onChange(true)}
         >
@@ -38,8 +39,8 @@ export default function AnswerField({
           className={cn(
             'px-5 py-2 rounded-md text-sm font-medium transition-all duration-150',
             value === false
-              ? 'bg-[#DE3411] text-white shadow-sm'
-              : 'bg-[#9AA5B1] text-[#3E4C59] hover:bg-[#9AA5B1]/80'
+              ? 'bg-[#F86A6A] text-white shadow-sm' // selected NO
+              : 'bg-[#E4E7EB] text-[#3E4C59] hover:bg-[#9AA5B1]/80' // unselected
           )}
           onClick={() => onChange(false)}
         >
@@ -49,7 +50,7 @@ export default function AnswerField({
     );
   }
 
-  /* NUMBER FIELD */
+  /*Number Field */
   if (type === 'number') {
     return (
       <input
@@ -66,7 +67,7 @@ export default function AnswerField({
     );
   }
 
-  /* TEXT FIELD */
+  /* Text Field */
   if (type === 'text') {
     return (
       <input
@@ -83,7 +84,7 @@ export default function AnswerField({
     );
   }
 
-  /* DROPDOWN */
+  /* Dropdown */
   if (type === 'dropdown') {
     return (
       <select
@@ -110,7 +111,7 @@ export default function AnswerField({
     );
   }
 
-  /* DATETIME PICKER */
+  /* Datetime Picker */
   if (type === 'datetime') {
     return (
       <input
@@ -126,7 +127,7 @@ export default function AnswerField({
     );
   }
 
-  /* MULTISELECT */
+  /* Multiseclect */
   if (type === 'multiselect') {
     const arr = Array.isArray(value) ? value : [];
 

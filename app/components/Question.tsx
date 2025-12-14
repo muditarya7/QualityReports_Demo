@@ -32,34 +32,31 @@ const Question = ({
       "
     >
       <div className="flex flex-col gap-4">
-        {/* Question Header */}
         <div className="flex items-start gap-4">
-          {/* Question Number Badge */}
           <span
             className="
-              flex-shrink-0 w-8 h-8 rounded-md 
-              bg-[rgba(45,58,140,0.1)] text-[#2D3A8C]
-              text-sm font-semibold flex items-center justify-center
-            "
+            flex-shrink-0 w-8 h-8 rounded-md
+  text-[#3E4C59]
+  text-sm font-semibold flex items-center justify-center
+            
+        
+  "
           >
-            {id}
+            {id}.
           </span>
 
-          {/* Question Text */}
           <div className="flex-1 pt-1">
             <p className="text-[#1F2933] font-medium leading-relaxed">
               {description}
               {required && <span className="text-[#DE3411] ml-1">*</span>}
             </p>
 
-            {/* Helper Text */}
             {helperText && (
               <p className="text-[#3E4C59] text-sm mt-1.5">{helperText}</p>
             )}
           </div>
         </div>
 
-        {/* Answer Field */}
         <div className="pl-12">
           <AnswerField
             type={type}

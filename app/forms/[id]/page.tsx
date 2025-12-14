@@ -49,19 +49,26 @@ export default function FormPage({ params }: FormPageProps) {
 
   return (
     <div className="min-h-screen bg-[#F3F4F6]">
-      {/* Header */}
       <header className="bg-white border-b border-[#CBD2D9] sticky top-0 z-10">
+        {' '}
+        {/* Header */}
         <div className="max-w-3xl mx-auto px-6 py-5">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              {/* Back Button */}
-              <Link
+              <Link // Back Button
                 href="/forms"
-                className="w-9 h-9 rounded-lg bg-[#9AA5B1] flex items-center justify-center
-                           text-[#3E4C59] hover:text-[#1F2933] hover:bg-[#9AA5B1]/80
-                           transition-all duration-150"
+                className=" group w-9 h-9 rounded-lg 
+                        bg-indigo-50 
+                        flex items-center justify-center
+                        transition-all duration-150
+                        hover:bg-indigo-100"
               >
-                <ArrowLeft className="w-4 h-4" />
+                <ArrowLeft
+                  className=" w-4 h-4 
+                text-indigo-700  
+              group-hover:text-[#19216C]
+                stroke-[2.6]"
+                />
               </Link>
 
               {/* Title */}
