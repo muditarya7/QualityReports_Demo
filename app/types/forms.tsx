@@ -12,9 +12,9 @@ export type ValidationRules = {
   text?: {
     minLen?: number;
     maxLen?: number;
-    pattern?: RegExp; // full-string match
-    forbidPattern?: RegExp; // any-match invalid
-    normalize?: boolean; // trim + collapse spaces
+    pattern?: RegExp;
+    forbidPattern?: RegExp;
+    normalize?: boolean;
   };
 
   number?: {
@@ -24,14 +24,14 @@ export type ValidationRules = {
   };
 
   options?: {
-    enforce?: boolean; // must be in options[]
+    enforce?: boolean;
     minSelected?: number;
     maxSelected?: number;
     unique?: boolean;
   };
 
   datetime?: {
-    minISO?: string; // 'YYYY-MM-DDTHH:mm'
+    minISO?: string;
     maxISO?: string;
     enforceValid?: boolean;
   };

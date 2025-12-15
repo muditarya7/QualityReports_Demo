@@ -8,16 +8,22 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+type GeneratePDFInput = {
+  title: string;
+  answers: any[];
+};
 
-export const generatePDF = (answers: any[]) => {
+export const generatePDF = ({ title, answers }: GeneratePDFInput) => {
   const doc = new jsPDF();
 
+  // Report title
   doc.setFontSize(18);
-  doc.text('Inspection Report', 14, 20);
+  doc.text(title, 14, 20);
 
   doc.setFontSize(12);
   doc.text(`Generated on: ${new Date().toLocaleString()}`, 14, 30);
 
+  // Table rows
   const rows = answers.map((q) => [
     q.id,
     q.description,
@@ -31,5 +37,7 @@ export const generatePDF = (answers: any[]) => {
     theme: 'striped',
   });
 
-  doc.save('inspection-report.pdf');
+  // Filename derived from title
+  const safeTitle = title.replace(/\s+/g, '_').toLowerCase();
+  doc.save(`${safeTitle}.pdf`);
 };

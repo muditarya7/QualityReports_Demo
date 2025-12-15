@@ -15,13 +15,25 @@ export const fire_safety_questions: QuestionData[] = [
     options: ['ABC', 'CO2', 'Water Mist', 'Foam'],
     required: true,
     value: '',
+    validation: {
+      options: {
+        enforce: true,
+      },
+    },
   },
   {
     id: 3,
     description: 'Number of extinguishers in the inspection area:',
     type: 'number',
     required: true,
-    value: '', // raw input string
+    value: '',
+    validation: {
+      number: {
+        min: 0,
+        max: 200,
+        integerOnly: true,
+      },
+    },
   },
   {
     id: 4,
@@ -36,6 +48,11 @@ export const fire_safety_questions: QuestionData[] = [
     type: 'datetime',
     required: true,
     value: '',
+    validation: {
+      datetime: {
+        enforceValid: true,
+      },
+    },
   },
   {
     id: 6,
@@ -51,5 +68,11 @@ export const fire_safety_questions: QuestionData[] = [
     required: false,
     helperText: 'Leave blank if no hazards were found.',
     value: '',
+    validation: {
+      text: {
+        maxLen: 500,
+        normalize: true,
+      },
+    },
   },
 ];

@@ -14,13 +14,27 @@ export const equipment_questions: QuestionData[] = [
     type: 'text',
     required: true,
     value: '',
+    validation: {
+      text: {
+        minLen: 5,
+        maxLen: 30,
+        pattern: /^[A-Z0-9-]+$/i,
+        normalize: true,
+      },
+    },
   },
   {
     id: 3,
     description: 'Record the operating temperature (°F):',
     type: 'number',
     required: true,
-    value: '', // raw input string
+    value: '',
+    validation: {
+      number: {
+        min: -40,
+        max: 300,
+      },
+    },
   },
   {
     id: 4,
@@ -29,6 +43,11 @@ export const equipment_questions: QuestionData[] = [
     options: ['Good', 'Minor Issues', 'Needs Repair', 'Out of Service'],
     required: true,
     value: '',
+    validation: {
+      options: {
+        enforce: true,
+      },
+    },
   },
   {
     id: 5,
@@ -43,6 +62,11 @@ export const equipment_questions: QuestionData[] = [
     type: 'datetime',
     required: true,
     value: '',
+    validation: {
+      datetime: {
+        enforceValid: true,
+      },
+    },
   },
   {
     id: 7,
@@ -51,5 +75,11 @@ export const equipment_questions: QuestionData[] = [
     required: false,
     value: '',
     helperText: 'Leave blank if no defects were found.',
+    validation: {
+      text: {
+        maxLen: 500,
+        normalize: true,
+      },
+    },
   },
 ];

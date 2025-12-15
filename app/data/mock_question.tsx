@@ -31,7 +31,7 @@ export const mock_questions: QuestionData[] = [
     description: 'Enter the temperature reading (°F):',
     type: 'number',
     required: true,
-    value: '', // raw input string
+    value: '',
     validation: { number: { min: -50, max: 200 } },
   },
   {
@@ -39,7 +39,7 @@ export const mock_questions: QuestionData[] = [
     description: 'Did all safety equipment pass visual inspection?',
     type: 'boolean',
     required: true,
-    value: null, // unanswered state
+    value: null,
   },
   {
     id: 5,

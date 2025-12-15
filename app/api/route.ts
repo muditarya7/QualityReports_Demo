@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import type { QuestionData, QuestionValue } from '../../../types/forms';
-import { form_index } from '../../../data/form_index';
-import { validateForm } from '../../../utils/validateForm';
+import type { QuestionData, QuestionValue } from '../types/forms';
+import { form_index } from '../data/form_index';
+import { validateForm } from '../utils/validateForm';
 
 type Payload = {
   formId: number;
@@ -76,6 +76,6 @@ export async function POST(req: Request) {
     );
   }
 
-  // TODO: persist to DB
+  
   return NextResponse.json({ ok: true }, { status: 200 });
 }

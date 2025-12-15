@@ -29,7 +29,7 @@ export default function ErrorModal({ open, errors, onClose }: Props) {
 
       <div className="absolute inset-0 flex items-center justify-center p-4">
         <div className="w-full max-w-2xl bg-white rounded-xl border border-[#CBD2D9] shadow-xl">
-          {/* HEADER */}
+          {/* Header */}
           <div className="flex items-start gap-4 p-5 border-b border-[#CBD2D9]">
             {/* subtle red accent */}
             <div className="w-1 h-9 bg-[#DE3411] rounded-full opacity-30" />
@@ -58,7 +58,7 @@ export default function ErrorModal({ open, errors, onClose }: Props) {
             </button>
           </div>
 
-          {/* BODY */}
+          {/* Body */}
           <div className="p-5 max-h-[60vh] overflow-auto">
             <div className="space-y-4">
               {groups.map((g) => (
@@ -84,7 +84,7 @@ export default function ErrorModal({ open, errors, onClose }: Props) {
             </div>
           </div>
 
-          {/* FOOTER */}
+          {/* Footer */}
           <div className="p-5 border-t border-[#CBD2D9] flex justify-end">
             <button
               type="button"

@@ -1,7 +1,7 @@
 'use client';
 
 import { Check } from 'lucide-react';
-import { cn } from '../utils/downloadpdf'; // keep as-is per your note
+import { cn } from '../utils/downloadpdf';
 import type { QuestionType, QuestionValue } from '../types/forms';
 
 type AnswerFieldProps = {
@@ -52,7 +52,6 @@ export default function AnswerField({
   }
 
   if (type === 'number') {
-    // IMPORTANT: keep raw string to avoid React controlled-number decimal issues
     const shown =
       typeof value === 'string' ? value : value === null ? '' : String(value);
 
@@ -67,7 +66,7 @@ export default function AnswerField({
           transition-all duration-150 text-[#1F2933] placeholder:text-[#3E4C59]
         "
         placeholder="Enter number"
-        onChange={(e) => onChange(e.target.value)} // store raw string
+        onChange={(e) => onChange(e.target.value)} // stores raw string
       />
     );
   }

@@ -11,7 +11,7 @@ export type ValidationErrorType =
   | 'network';
 
 export type ValidationError = {
-  questionId: number; // -1 for global errors
+  questionId: number;
   description: string;
   type: ValidationErrorType;
   message: string;
@@ -107,7 +107,7 @@ export function validateForm(questions: QuestionData[]): ValidationResult {
       continue;
     }
 
-    // optional + empty => skip deeper validation
+    // optional+empty
     if (!required && isEmptyValue(q.type, q.value)) continue;
 
     switch (q.type) {

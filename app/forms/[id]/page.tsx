@@ -60,7 +60,7 @@ export default function FormPage({ params }: FormPageProps) {
   // If route changes (or hot reload), keep state aligned with the selected form
   useEffect(() => {
     if (form) setAnswers(cloneQuestions(form.questions));
-  }, [formId]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [formId]);
 
   const updateAnswer = (questionId: number, newValue: any) => {
     setAnswers((prev) =>
@@ -93,7 +93,7 @@ export default function FormPage({ params }: FormPageProps) {
         })),
       };
 
-      const res = await fetch('/api/forms/submit', {
+      const res = await fetch('/api', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -119,7 +119,10 @@ export default function FormPage({ params }: FormPageProps) {
         return;
       }
 
-      generatePDF(coerceForOutput(answers));
+      generatePDF({
+        title: form.title,
+        answers,
+      });
     } catch {
       openErrors([
         {
