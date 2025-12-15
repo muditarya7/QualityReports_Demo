@@ -9,19 +9,20 @@ export const mock_questions: QuestionData[] = [
   },
   {
     id: 2,
-    description: 'Enter the temperature reading (°F):',
-    type: 'number',
-    required: true,
-    value: 0,
-  },
-  {
-    id: 3,
     description: 'Select the inspection area:',
     type: 'dropdown',
     options: ['Warehouse', 'Office', 'Storage', 'Loading Dock'],
     required: true,
     value: '',
   },
+  {
+    id: 3,
+    description: 'Enter the temperature reading (°F):',
+    type: 'number',
+    required: true,
+    value: 0,
+  },
+
   {
     id: 4,
     description: 'Did all safety equipment pass visual inspection?',
