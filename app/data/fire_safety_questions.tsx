@@ -1,4 +1,4 @@
-import { QuestionData } from '@/app/components/Question';
+import type { QuestionData } from '@/app/types/forms';
 
 export const fire_safety_questions: QuestionData[] = [
   {
@@ -6,7 +6,7 @@ export const fire_safety_questions: QuestionData[] = [
     description: 'Are fire extinguishers present and visible?',
     type: 'boolean',
     required: true,
-    value: false,
+    value: null,
   },
   {
     id: 2,
@@ -21,14 +21,14 @@ export const fire_safety_questions: QuestionData[] = [
     description: 'Number of extinguishers in the inspection area:',
     type: 'number',
     required: true,
-    value: 0,
+    value: '', // raw input string
   },
   {
     id: 4,
     description: 'Is the fire alarm system operational?',
     type: 'boolean',
     required: true,
-    value: false,
+    value: null,
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ export const fire_safety_questions: QuestionData[] = [
     description: 'Is emergency exit signage clearly visible?',
     type: 'boolean',
     required: true,
-    value: false,
+    value: null,
   },
   {
     id: 7,

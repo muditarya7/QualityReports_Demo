@@ -1,18 +1,13 @@
-import AnswerField from './AnswerField';
+'use client';
 
-export type Question_Props = {
-  id: number;
-  description: string;
-  value: string | number | boolean | string[];
-  type: 'boolean' | 'number' | 'dropdown' | 'text' | 'datetime' | 'multiselect';
-  options?: string[];
-  required?: boolean;
-  helperText?: string;
+import AnswerField from './AnswerField';
+import type { QuestionData } from '../types/forms';
+
+export type QuestionProps = QuestionData & {
   onChange: (val: any) => void;
 };
-export type QuestionData = Omit<Question_Props, 'onChange'>;
 
-const Question = ({
+export default function Question({
   id,
   description,
   value,
@@ -21,7 +16,7 @@ const Question = ({
   required,
   helperText,
   onChange,
-}: Question_Props) => {
+}: QuestionProps) {
   return (
     <div
       className="
@@ -35,12 +30,10 @@ const Question = ({
         <div className="flex items-start gap-4">
           <span
             className="
-            flex-shrink-0 w-8 h-8 rounded-md
-  text-[#3E4C59]
-  text-sm font-semibold flex items-center justify-center
-            
-        
-  "
+              flex-shrink-0 w-8 h-8 rounded-md
+              text-[#3E4C59]
+              text-sm font-semibold flex items-center justify-center
+            "
           >
             {id}.
           </span>
@@ -68,6 +61,4 @@ const Question = ({
       </div>
     </div>
   );
-};
-
-export default Question;
+}

@@ -1,4 +1,4 @@
-import { QuestionData } from '../components/Question';
+import type { QuestionData } from '@/app/types/forms';
 
 export const equipment_questions: QuestionData[] = [
   {
@@ -6,7 +6,7 @@ export const equipment_questions: QuestionData[] = [
     description: 'Is the equipment powered off before inspection?',
     type: 'boolean',
     required: true,
-    value: false,
+    value: null,
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ export const equipment_questions: QuestionData[] = [
     description: 'Record the operating temperature (°F):',
     type: 'number',
     required: true,
-    value: 0,
+    value: '', // raw input string
   },
   {
     id: 4,
@@ -35,7 +35,7 @@ export const equipment_questions: QuestionData[] = [
     description: 'Did the equipment pass the mechanical check?',
     type: 'boolean',
     required: true,
-    value: false,
+    value: null,
   },
   {
     id: 6,

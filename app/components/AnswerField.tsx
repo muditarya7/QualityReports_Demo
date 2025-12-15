@@ -1,9 +1,12 @@
-import { cn } from '../utils/downloadpdf';
+'use client';
+
 import { Check } from 'lucide-react';
+import { cn } from '../utils/downloadpdf'; // keep as-is per your note
+import type { QuestionType, QuestionValue } from '../types/forms';
 
 type AnswerFieldProps = {
-  type: 'boolean' | 'number' | 'dropdown' | 'text' | 'datetime' | 'multiselect';
-  value: string | number | boolean | string[];
+  type: QuestionType;
+  value: QuestionValue;
   options?: string[];
   onChange: (val: any) => void;
 };
@@ -14,33 +17,31 @@ export default function AnswerField({
   options,
   onChange,
 }: AnswerFieldProps) {
-  /* Boolean */
-
   if (type === 'boolean') {
+    const v = typeof value === 'boolean' ? value : null;
+
     return (
       <div className="flex items-center gap-3">
-        {/* YES button */}
         <button
           type="button"
           className={cn(
             'px-5 py-2 rounded-md text-sm font-medium transition-all duration-150',
-            value === true
-              ? 'bg-[#51CA58] text-white shadow-sm' // selected YES
-              : 'bg-[#E4E7EB] text-[#3E4C59] hover:bg-[#9AA5B1]/80' // unselected
+            v === true
+              ? 'bg-[#51CA58] text-white shadow-sm'
+              : 'bg-[#E4E7EB] text-[#3E4C59] hover:bg-[#9AA5B1]/80'
           )}
           onClick={() => onChange(true)}
         >
           Yes
         </button>
 
-        {/* NO button */}
         <button
           type="button"
           className={cn(
             'px-5 py-2 rounded-md text-sm font-medium transition-all duration-150',
-            value === false
-              ? 'bg-[#F86A6A] text-white shadow-sm' // selected NO
-              : 'bg-[#E4E7EB] text-[#3E4C59] hover:bg-[#9AA5B1]/80' // unselected
+            v === false
+              ? 'bg-[#F86A6A] text-white shadow-sm'
+              : 'bg-[#E4E7EB] text-[#3E4C59] hover:bg-[#9AA5B1]/80'
           )}
           onClick={() => onChange(false)}
         >
@@ -50,24 +51,27 @@ export default function AnswerField({
     );
   }
 
-  /*Number Field */
   if (type === 'number') {
+    // IMPORTANT: keep raw string to avoid React controlled-number decimal issues
+    const shown =
+      typeof value === 'string' ? value : value === null ? '' : String(value);
+
     return (
       <input
         type="number"
-        value={typeof value === 'number' ? value : ''}
+        inputMode="decimal"
+        value={shown}
         className="
           w-40 px-4 py-2.5 text-sm bg-white border border-[#CBD2D9] rounded-md
           focus:outline-none focus:ring-2 focus:ring-[#2D3A8C] focus:border-transparent
           transition-all duration-150 text-[#1F2933] placeholder:text-[#3E4C59]
         "
         placeholder="Enter number"
-        onChange={(e) => onChange(Number(e.target.value))}
+        onChange={(e) => onChange(e.target.value)} // store raw string
       />
     );
   }
 
-  /* Text Field */
   if (type === 'text') {
     return (
       <input
@@ -84,7 +88,6 @@ export default function AnswerField({
     );
   }
 
-  /* Dropdown */
   if (type === 'dropdown') {
     return (
       <select
@@ -111,12 +114,11 @@ export default function AnswerField({
     );
   }
 
-  /* Datetime Picker */
   if (type === 'datetime') {
     return (
       <input
         type="datetime-local"
-        value={value as string}
+        value={typeof value === 'string' ? value : ''}
         className="
           px-4 py-2.5 text-sm bg-white border border-[#CBD2D9] rounded-md
           focus:outline-none focus:ring-2 focus:ring-[#2D3A8C] focus:border-transparent
@@ -127,9 +129,14 @@ export default function AnswerField({
     );
   }
 
-  /* Multiseclect */
   if (type === 'multiselect') {
     const arr = Array.isArray(value) ? value : [];
+
+    const toggle = (opt: string) => {
+      const isSelected = arr.includes(opt);
+      const next = isSelected ? arr.filter((x) => x !== opt) : [...arr, opt];
+      onChange(next);
+    };
 
     return (
       <div className="flex flex-wrap gap-3">
@@ -137,8 +144,10 @@ export default function AnswerField({
           const isSelected = arr.includes(opt);
 
           return (
-            <label
+            <button
+              type="button"
               key={opt}
+              onClick={() => toggle(opt)}
               className={cn(
                 'flex items-center gap-2.5 px-4 py-2.5 rounded-md text-sm cursor-pointer transition-all duration-150 border',
                 isSelected
@@ -158,7 +167,7 @@ export default function AnswerField({
               </div>
 
               <span className="font-medium">{opt}</span>
-            </label>
+            </button>
           );
         })}
       </div>
